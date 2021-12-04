@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import PropTypes from 'prop-types';
-import { a } from 'react-router-dom';
+import {  Link } from 'react-router-dom';
 
 
 export default function Navbar(props) {
@@ -11,7 +11,7 @@ export default function Navbar(props) {
     return (
       
         <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode} px-2`}>
-        <a className="navbar-brand" href="#">{props.title}</a>
+        <Link className="navbar-brand" to="/textforms">{props.title}</Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -19,11 +19,11 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <a className="nav-a" href="#">Home <span className="sr-only">(current)</span></a>
+                <Link className="nav-a" to="/textforms">Home <span className="sr-only">(current)</span></Link>
               </li>
-              {/* <li className="nav-item">
-                <a className="nav-a" to="/about">{props.abouttext}</a>
-              </li> */}
+              <li className="nav-item">
+                <Link className="nav-a" to="/about">{props.abouttext}</Link>
+              </li>
             
             
             </ul>

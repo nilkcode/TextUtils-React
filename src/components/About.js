@@ -1,45 +1,58 @@
 import React, {useState} from "react";
 
-export default function About() {
+export default function About(props) {
   
-     const [mystyle, setmystyle] = useState(  {
-        color:'black',
-        backgroundColor:"white"
-    })
-    const[mystyletext, setmystyletext] = useState("Enbale Dark Mode")
+    //  const [mystyle, setmystyle] = useState(  {
+    //     color:'black',
+    //     backgroundColor:"white"
+    // })
 
-    const toogleStyle = () => {
-       
-       if(mystyle.color == 'black') {
-
-         setmystyle({
-            color:'white',
-            backgroundColor:"black",
-            border:"2px solid #fff",
-         })
-         setmystyletext("Enbale Light Mode")
-
-       } else {
-         
-        setmystyle({
-            color:'black',
-            backgroundColor:"white"
-         })
-         setmystyletext("Enbale Derk Mode")
-       }
-
-
-
+    let mystyle = {
+       color: props.mode == 'dark' ? '#fff' : '#000',
+       backgroundColor: props.mode == 'light' ? '#f8f9fa' : '#2f4254'
     }
+    let borderstyle = {
+        borderWidth:'1px',
+        borderColor: props.mode == 'light' ? '#f8f9fa' : '#404040'
+
+      
+    }
+
+    
+    // const[mystyletext, setmystyletext] = useState("Enbale Dark Mode")
+
+    // const toogleStyle = () => {
+       
+    //    if(mystyle.color == 'black') {
+
+    //      setmystyle({
+    //         color:'white',
+    //         backgroundColor:"black",
+    //         border:"2px solid #fff",
+    //      })
+    //      setmystyletext("Enbale Light Mode")
+
+    //    } else {
+         
+    //     setmystyle({
+    //         color:'black',
+    //         backgroundColor:"white"
+    //      })
+    //      setmystyletext("Enbale Derk Mode")
+    //    }
+
+
+
+    // }
 
 
   return (
 
     <>
-    <h1>About Us Page</h1>
+    <h2 className={`mx-2 my-3 text-${props.mode === 'light'? 'dark' :'light'}`}>{props.heading}</h2>
      <div className="container mt-4" >
             <div className="accordion" id="accordionExample">
-            <div className="accordion-item" >
+            <div className="accordion-item" style={borderstyle}>
             <h2 className="accordion-header" id="headingOne">
             <button style={mystyle} className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 Accordion Item #1
@@ -51,7 +64,7 @@ export default function About() {
             </div>
             </div>
         </div>
-        <div className="accordion-item"  >
+        <div className="accordion-item" style={borderstyle} >
             <h2 className="accordion-header" id="headingTwo">
             <button style={mystyle} className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Accordion Item #2
@@ -63,7 +76,7 @@ export default function About() {
             </div>
             </div>
         </div>
-        <div className="accordion-item" >
+        <div className="accordion-item" style={borderstyle} >
             <h2 className="accordion-header" id="headingThree">
             <button style={mystyle} className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 Accordion Item #3
@@ -77,7 +90,7 @@ export default function About() {
         </div>
         </div>
         <div className="container my-3">
-        <button type="button" className="btn btn-primary my-3" onClick={toogleStyle}>{mystyletext}</button>
+        {/* <button type="button" className="btn btn-primary my-3" onClick={toogleStyle}>{mystyletext}</button> */}
 
         </div>
 

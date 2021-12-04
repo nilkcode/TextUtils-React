@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import Textforms from './components/TextForms';
-// import About from './components/About';
+import About from './components/About';
 import TextConverter from './components/TextConverter';
 import React, { useState } from 'react'
 import {
@@ -76,19 +76,19 @@ function App() {
   return (
     <div>
     
-     {/* <Router> */}
+     <Router>
      <Navbar title="Textutils"  mode={mode} toogleMode={toogleMode}  />
-     {/* <Alert  alert={alert}/>
+      <Alert  alert={alert}/>
       <div className="container">
-      <Routes> */}
-       <Textforms showAlert={showAlert}  heading="Enter text analyze below" mode={mode}/>
-        {/* <Route exact path="/" element={<Textforms />}  mode={mode}  />
-        <Route  exact path="/about" element={<About />}  mode={mode} /> */}
-      {/* </Routes>
+      <Routes> 
+       {/* <Textforms showAlert={showAlert}  heading="Enter text analyze below" mode={mode}/> */}
+       <Route exact path="/textforms" showAlert={showAlert} element={<Textforms  heading="Enter text analyze below"  mode={mode} />}   />
+        <Route  exact path="/about" element={<About mode={mode}  heading="About Us Page"/>}   /> 
+       </Routes>
        
-        {/* <TextConverter/> */}
-       {/* </div> } */}
-     {/* </Router> */}
+       {/* <TextConverter/>  */}
+       </div> 
+      </Router> 
     </div>
  
   );

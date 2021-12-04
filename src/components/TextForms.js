@@ -59,6 +59,7 @@ export default function Textforms(props) {
       let text = document.getElementById("myBox");
       text.select();
       navigator.clipboard.writeText(text.value);
+      document.getSelection().removeAllRanges();
 
 
     }
@@ -95,19 +96,19 @@ export default function Textforms(props) {
             <div className="mb-3">
                 <textarea    className="form-control" id="myBox" value={text} onChange ={handleOnChange} onFocus={handleFocus} rows="10" style={{backgroundColor:props.mode ==='light' ? '#f8f9fa' : '#212529',color:props.mode ==='light' ? '#000' : '#fff' ,border:props.mode ==='light' ? '#000' : '#fff'}}></textarea>           
             </div>
-            <button className="btn btn-primary " onClick={handleUpClick}>Convert to uppercase</button>
-            <button className="btn btn-info mx-1" onClick={handleLowerClick}>Convert to lowercase</button>
-            <button className="btn btn-danger mx-1" onClick={handleClearTextClick}>Clear text</button>
-            <button className="btn btn-success mx-1" onClick={handleOnCapitlisWordOfString}>Capital First Word</button>
-            <button className="btn btn-success mx-1" onClick={handleCopy}>Copy Text</button>
-            <button className="btn btn-success mx-1" onClick={handleRemoveExtraSpace }>Removed Extra Space</button>
+            <button  disabled = {text.length === 0} className="btn btn-primary " onClick={handleUpClick}>Convert to uppercase</button>
+            <button  disabled = {text.length === 0} className="btn btn-info mx-1 my-1" onClick={handleLowerClick}>Convert to lowercase</button>
+            <button   disabled = {text.length === 0} className="btn btn-danger mx-1 my-1" onClick={handleClearTextClick}>Clear text</button>
+            <button   disabled = {text.length === 0} className="btn btn-success mx-1 my-1" onClick={handleOnCapitlisWordOfString}>Capital First Word</button>
+            <button  disabled = {text.length === 0} className="btn btn-success mx-1 my-1" onClick={handleCopy}>Copy Text</button>
+            <button  disabled = {text.length === 0} className="btn btn-success mx-1 my-1" onClick={handleRemoveExtraSpace }>Removed Extra Space</button>
 
          </div>
 
          <div className={`container my-2 text-${props.mode === 'light' ? 'dark' : 'light'}`}>
              <h1>Text summery </h1>
-             <p>{ text.split(/[ ]+/).length - 1} words and {text.length} charecter</p>
-             <p>{0.008 * text.split(" ").length  } read to one word</p>
+             <p>{ text.split(" ").filter((element) => {return element.length !== 0}).length} words and {text.length} charecter</p>
+             <p>{0.008 * text.split(" ").filter((element) => {return element.length !== 0}).length} read to one word</p>
             
              <h2>Preview Text ::</h2>
              <p>
